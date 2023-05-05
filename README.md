@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+Sure! Here is the documentation for the provided front-end React code:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### App Component
 
-## Available Scripts
+This component is the main component of the application. It manages the state of the application and renders the UI elements. 
 
-In the project directory, you can run:
+#### State
+- `value` - A string that stores the value of the input field where the user types the message.
+- `message` - An object that stores the message returned by the OpenAI API.
+- `previousChats` - An array of objects that stores the user's previous chats.
+- `currentTitle` - A string that stores the title of the current chat.
 
-### `npm start`
+#### Methods
+- `createNewChat()` - A method that clears the input field and the message state and sets the currentTitle state to null.
+- `handleClick(uniqueTitle)` - A method that sets the currentTitle state to the `uniqueTitle` parameter and clears the input field and the message state.
+- `getMessages()` - An asynchronous method that sends a POST request to the server with the user's message, retrieves a response from the OpenAI API, and sets the message state with the response.
+- `useEffect()` - A React hook that is called after every render of the component. It updates the previousChats state with the current chat message if the currentTitle, value, and message states are all truthy.
+- `render()` - The main method that renders the UI elements of the application.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### UI Elements
+- A "New Chat" button that clears the input field and the message state and sets the currentTitle state to null.
+- A list of unique chat titles, generated from the previousChats state, that can be clicked to switch between different chats.
+- A main section that contains the chat feed and the input field.
+- A disclaimer that explains the limitations of the OpenAI API.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Now for the back-end:
 
-### `npm test`
+### Server
+This is the server-side code that receives requests from the front-end, sends them to the OpenAI API, and returns the response to the front-end.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Endpoints
+- `/completions` - A POST endpoint that receives a message from the front-end, sends it to the OpenAI API, and returns the response to the front-end.
 
-### `npm run build`
+#### Middleware
+- `express.json()` - A middleware that parses incoming requests with JSON payloads.
+- `cors()` - A middleware that enables Cross-Origin Resource Sharing (CORS) for the server.
+- `dotenv.config()` - A middleware that loads environment variables from a `.env` file.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Dependencies
+- `express` - A fast, unopinionated, minimalist web framework for Node.js.
+- `cors` - A package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+- `dotenv` - A zero-dependency module that loads environment variables from a `.env` file.
