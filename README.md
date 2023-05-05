@@ -1,4 +1,4 @@
-Sure! Here is the documentation for the provided front-end React code:
+This program is a recreation of the chatGPT user interface, complete with chat history and the GPT 3.5 language model accessed by OpenAI's API.
 
 ### App Component
 
