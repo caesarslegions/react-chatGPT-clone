@@ -1,5 +1,11 @@
 This program is a recreation of the chatGPT user interface, complete with chat history and the GPT 3.5 language model accessed by OpenAI's API.
 
+To run, navigate to the folder and enter the following commands:
+npm run start:frontend
+npm run start:backend
+
+A page should appear in your web browser where you can interact with chatGPT, much like on OpenAI's own website.
+
 ### App Component
 
 This component is the main component of the application. It manages the state of the application and renders the UI elements. 
